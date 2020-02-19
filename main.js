@@ -40,15 +40,52 @@ const gameOver = (hasWon) => {
   resetGame();
 }
 
-
+// let cellsAroundClick = [];
+let counter = 0;
 const checkSurroundingCells = ($cell) => {
-  const square = parseInt($cell.attr("id"));
-  console.log(square);
   let cellsAroundClick = [];
-  if ($(square - 10).hasClass('bomb')) {
-    cellsAroundClick.push($(this));
-    console.log(cellsAroundClick);
+  const square = parseInt($cell.attr("id"));
+  // console.log('help');
+  if ($(`#${square - 10}`).hasClass('bomb')) {
+    cellsAroundClick.push((square-10));
+    // console.log(cellsAroundClick);
   }
+  if ($(`#${square - 9}`).hasClass('bomb')) {
+    cellsAroundClick.push((square-9));
+    // console.log(cellsAroundClick);
+  }
+  if ($(`#${square + 1}`).hasClass('bomb')) {
+    cellsAroundClick.push((square+1));
+    // console.log(cellsAroundClick);
+  }
+  if ($(`#${square + 11}`).hasClass('bomb')) {
+    cellsAroundClick.push((square+11));
+    // console.log(cellsAroundClick);
+  }
+  if ($(`#${square + 10}`).hasClass('bomb')) {
+    cellsAroundClick.push((square+10));
+    // console.log(cellsAroundClick);
+  }
+  if ($(`#${square + 9}`).hasClass('bomb')) {
+    cellsAroundClick.push((square+9));
+    // console.log(cellsAroundClick);
+  }
+  if ($(`#${square - 1}`).hasClass('bomb')) {
+    cellsAroundClick.push((square-1));
+    // console.log(cellsAroundClick);
+  }
+  if ($(`#${square - 11}`).hasClass('bomb')) {
+    cellsAroundClick.push((square-11));
+    // console.log(cellsAroundClick);
+  }
+  console.log(cellsAroundClick);
+
+  // counter = 0;
+  for (let l = 0; l < cellsAroundClick.length; l++) {
+    counter++;
+  }
+
+  
   // if ($cell.eq(square).hasClass('bomb')) {
   //   alert('bomb to the right!');
   // }
@@ -64,8 +101,8 @@ const checkSurroundingCells = ($cell) => {
   // look at cell[row - 1][value]
   // look at cell[row - 1][value + 1]
   // look at cell[row - 1][value - 1]
-
-}
+  return $cell.text(counter);
+} 
 
 const clicking = $board.on('click', '.square', function() {
   const $cell = $(this);
@@ -74,6 +111,7 @@ const clicking = $board.on('click', '.square', function() {
   } else {
     const dangerNumber = checkSurroundingCells($cell);
     console.log($(this));
+    console.log(dangerNumber);
   }
   
   

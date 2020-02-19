@@ -1,6 +1,7 @@
 body {
   text-align: center;
   background-color: black;
+  color: white;
 }
 
 h1 {
@@ -20,24 +21,7 @@ h1 {
 
 .square {
   border: 2px solid white;
-}
-
-.column {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-color: lightgray;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-.hidden {
-  background-color: darkgrey;
-  cursor: pointer;
-}
-
-.hidden:hover {
-  background-color: lightgrey;
+  font-size: 24px;
 }
 
 .bomb {
