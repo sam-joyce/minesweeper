@@ -13,8 +13,17 @@ h1 {
   color: white;
 }
 
-.board {
+#board {
+  margin: 0 auto;
   border: 2px solid black;
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.square {
+  border: 2px solid white;
 }
 
 .column {
@@ -35,6 +44,6 @@ h1 {
   }
 }
 
-.column.hidden.bomb {
+.bomb {
   background-color: red;
 }

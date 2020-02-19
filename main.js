@@ -1,23 +1,31 @@
 const $board = $('#board');
 
-const makeBoard = (rows, columns) => {
+const makeBoard = (squares) => {
   // empty: Remove all child nodes of the set of matched elements from the DOM.
   $board.empty();
-  for (let i = 0; i < rows; i++) {
-    const $row = $(`<div class = "row" id = "${i}"></div>`);
-    for (let j = 0; j < columns; j++) {
-      const $column = $(`<div class = "column hidden" value = "${j}"></div>`);
-      if (Math.random() < 0.1) {
-        $column.addClass('bomb');
-      }
-      $row.append($column);
+  for(let i = 0; i < squares; i++) {
+    const $square = $(`<div class="square" id="${i}"></div>`)
+    if (Math.random() < 0.1) {
+      $square.addClass('bomb');
     }
-    $board.append($row);
+    $board.append($square);
   }
+
+  // for (let i = 0; i < rows; i++) {
+  //   const $row = $(`<div class = "row" id = "${i}"></div>`);
+  //   for (let j = 0; j < columns; j++) {
+  //     const $column = $(`<div class = "column hidden" value = "${j}"></div>`);
+  //     if (Math.random() < 0.1) {
+  //       $column.addClass('bomb');
+  //     }
+  //     $row.append($column);
+  //   }
+  //   $board.append($row);
+  // }
 }
 
 const resetGame = () => {
-  makeBoard(10, 10);
+  makeBoard(100);
 }
 
 
@@ -34,14 +42,16 @@ const gameOver = (hasWon) => {
 
 
 const checkSurroundingCells = ($cell) => {
-  const column = $cell.attr("value");
-  const row = $cell.parent().attr("id");
-  console.log(column, row);
-  $()
-
-  if ($cell.hasClass('bomb')) {
-    alert('bomb to the right!');
+  const square = parseInt($cell.attr("id"));
+  console.log(square);
+  let cellsAroundClick = [];
+  if ($(square - 10).hasClass('bomb')) {
+    cellsAroundClick.push($(this));
+    console.log(cellsAroundClick);
   }
+  // if ($cell.eq(square).hasClass('bomb')) {
+  //   alert('bomb to the right!');
+  // }
   // get the cell.value
   // look at cell[row][value]
   // look at cell[row][value + 1]
@@ -57,7 +67,7 @@ const checkSurroundingCells = ($cell) => {
 
 }
 
-const clicking = $board.on('click', '.column.hidden', function() {
+const clicking = $board.on('click', '.square', function() {
   const $cell = $(this);
   if ($cell.hasClass('bomb')) {
     return gameOver(false);
