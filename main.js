@@ -1,4 +1,4 @@
-const $board = $('#board');
+const $board = $('#board'); 
 
 const makeBoard = (squares) => {
   // empty: Remove all child nodes of the set of matched elements from the DOM.
@@ -41,9 +41,10 @@ const gameOver = (hasWon) => {
 }
 
 // let cellsAroundClick = [];
-let counter = 0;
+// let counter = 0;
 const checkSurroundingCells = ($cell) => {
   let cellsAroundClick = [];
+  let counter = 0;
   const square = parseInt($cell.attr("id"));
   // console.log('help');
   if ($(`#${square - 10}`).hasClass('bomb')) {
@@ -107,6 +108,7 @@ const checkSurroundingCells = ($cell) => {
 const clicking = $board.on('click', '.square', function() {
   const $cell = $(this);
   if ($cell.hasClass('bomb')) {
+    $(this).append(`<img src="./bomb-img.jpg" />`);
     return gameOver(false);
   } else {
     const dangerNumber = checkSurroundingCells($cell);
