@@ -32,33 +32,41 @@ const gameOver = (hasWon) => {
 // let cellsAroundClick = [];
 // let counter = 0;
 const checkSurroundingCells = ($cell) => {
+  const square = parseInt($cell.attr("id"));
+  let cellsToCheck = [(square-10), (square-9), (square+1), (square+11), (square+10), (square+9), (square-1), (square-11)];
   let cellsAroundClick = [];
   let counter = 0;
-  const square = parseInt($cell.attr("id"));
-  if ($(`#${square - 10}`).hasClass('bomb')) {
-    cellsAroundClick.push((square-10));
+  // const square = parseInt($cell.attr("id"));
+  for (let a = 0; a < cellsToCheck.length; a++) {
+    if ($(`#${a}`).hasClass('bomb')) {
+      cellsAroundClick.push(a);
+    }
   }
-  if ($(`#${square - 9}`).hasClass('bomb')) {
-    cellsAroundClick.push((square-9));
-  }
-  if ($(`#${square + 1}`).hasClass('bomb')) {
-    cellsAroundClick.push((square+1));
-  }
-  if ($(`#${square + 11}`).hasClass('bomb')) {
-    cellsAroundClick.push((square+11));
-  }
-  if ($(`#${square + 10}`).hasClass('bomb')) {
-    cellsAroundClick.push((square+10));
-  }
-  if ($(`#${square + 9}`).hasClass('bomb')) {
-    cellsAroundClick.push((square+9));
-  }
-  if ($(`#${square - 1}`).hasClass('bomb')) {
-    cellsAroundClick.push((square-1));
-  }
-  if ($(`#${square - 11}`).hasClass('bomb')) {
-    cellsAroundClick.push((square-11));
-  }
+
+  // if ($(`#${square - 10}`).hasClass('bomb')) {
+  //   cellsAroundClick.push((square-10));
+  // }
+  // if ($(`#${square - 9}`).hasClass('bomb')) {
+  //   cellsAroundClick.push((square-9));
+  // }
+  // if ($(`#${square + 1}`).hasClass('bomb')) {
+  //   cellsAroundClick.push((square+1));
+  // }
+  // if ($(`#${square + 11}`).hasClass('bomb')) {
+  //   cellsAroundClick.push((square+11));
+  // }
+  // if ($(`#${square + 10}`).hasClass('bomb')) {
+  //   cellsAroundClick.push((square+10));
+  // }
+  // if ($(`#${square + 9}`).hasClass('bomb')) {
+  //   cellsAroundClick.push((square+9));
+  // }
+  // if ($(`#${square - 1}`).hasClass('bomb')) {
+  //   cellsAroundClick.push((square-1));
+  // }
+  // if ($(`#${square - 11}`).hasClass('bomb')) {
+  //   cellsAroundClick.push((square-11));
+  // }
   console.log(cellsAroundClick);
 
   // counter = 0;
