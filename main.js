@@ -42,31 +42,6 @@ const checkSurroundingCells = ($cell) => {
       cellsAroundClick.push(a);
     }
   }
-
-  // if ($(`#${square - 10}`).hasClass('bomb')) {
-  //   cellsAroundClick.push((square-10));
-  // }
-  // if ($(`#${square - 9}`).hasClass('bomb')) {
-  //   cellsAroundClick.push((square-9));
-  // }
-  // if ($(`#${square + 1}`).hasClass('bomb')) {
-  //   cellsAroundClick.push((square+1));
-  // }
-  // if ($(`#${square + 11}`).hasClass('bomb')) {
-  //   cellsAroundClick.push((square+11));
-  // }
-  // if ($(`#${square + 10}`).hasClass('bomb')) {
-  //   cellsAroundClick.push((square+10));
-  // }
-  // if ($(`#${square + 9}`).hasClass('bomb')) {
-  //   cellsAroundClick.push((square+9));
-  // }
-  // if ($(`#${square - 1}`).hasClass('bomb')) {
-  //   cellsAroundClick.push((square-1));
-  // }
-  // if ($(`#${square - 11}`).hasClass('bomb')) {
-  //   cellsAroundClick.push((square-11));
-  // }
   console.log(cellsAroundClick);
 
   // counter = 0;
@@ -81,12 +56,9 @@ const clicking = $board.on('click', '.square', function() {
   const $cell = $(this);
   if ($cell.hasClass('bomb')) {
     $(".bomb").addClass("showBomb");
-    // $cell.append(`<img src="./bomb-img.jpg"/>`);
     gameOver(false);
   } else {
     const dangerNumber = checkSurroundingCells($cell);
-    console.log($(this));
-    console.log(dangerNumber);
   }
   
 })
