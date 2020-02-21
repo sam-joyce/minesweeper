@@ -35,8 +35,11 @@ h1 {
 }
 
 .bomb {
-  background-image: url("./bomb-img.jpg");
   background-size: contain;
   border: 2px solid white;
+}
+
+.showBomb {
+  background-image: url("./bomb-img.jpg");
 }
 /*# sourceMappingURL=style.css.map */

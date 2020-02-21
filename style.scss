@@ -33,12 +33,10 @@ h1 {
 }
 
 .bomb {
-  background-image: url('./bomb-img.jpg');
   background-size: contain;
-  // visibility: hidden;
   border: 2px solid white;
 }
 
-// .showBomb {
-//   visibility: visible;
-// }
+.showBomb {
+  background-image: url('./bomb-img.jpg');
+}

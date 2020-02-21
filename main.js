@@ -26,7 +26,7 @@ const gameOver = (hasWon) => {
     message = 'BOOM!! Game Over';
   }
   alert(message);
-  resetGame();
+  // resetGame();
 }
 
 // let cellsAroundClick = [];
@@ -72,9 +72,9 @@ const checkSurroundingCells = ($cell) => {
 const clicking = $board.on('click', '.square', function() {
   const $cell = $(this);
   if ($cell.hasClass('bomb')) {
-    $cell.addClass("showBomb");
+    $(".bomb").addClass("showBomb");
     // $cell.append(`<img src="./bomb-img.jpg"/>`);
-    return gameOver(false);
+    gameOver(false);
   } else {
     const dangerNumber = checkSurroundingCells($cell);
     console.log($(this));
