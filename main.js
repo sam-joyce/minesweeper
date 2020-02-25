@@ -34,7 +34,6 @@ const checkSurroundingCells = ($cell) => {
   let cellsToCheck = [(square-10), (square-9), (square+1), (square+11), (square+10), (square+9), (square-1), (square-11)];
   // console.log(cellsToCheck);
   let cellsAroundClick = [];
-
   // const square = parseInt($cell.attr("id"));
   for (let a = 0; a < cellsToCheck.length; a++) {
     if ($(`#${cellsToCheck[a]}`).hasClass('bomb')) {
