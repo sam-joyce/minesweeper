@@ -37,6 +37,7 @@ h1 {
 .bomb {
   background-size: contain;
   border: 2px solid white;
+  background-color: red;
 }
 
 .showBomb {

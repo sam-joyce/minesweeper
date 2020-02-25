@@ -29,56 +29,31 @@ const gameOver = (hasWon) => {
   // resetGame();
 }
 
-// let cellsAroundClick = [];
-// let counter = 0;
 const checkSurroundingCells = ($cell) => {
-  let cellsAroundClick = [];
-  let counter = 0;
   const square = parseInt($cell.attr("id"));
-  if ($(`#${square - 10}`).hasClass('bomb')) {
-    cellsAroundClick.push((square-10));
-  }
-  if ($(`#${square - 9}`).hasClass('bomb')) {
-    cellsAroundClick.push((square-9));
-  }
-  if ($(`#${square + 1}`).hasClass('bomb')) {
-    cellsAroundClick.push((square+1));
-  }
-  if ($(`#${square + 11}`).hasClass('bomb')) {
-    cellsAroundClick.push((square+11));
-  }
-  if ($(`#${square + 10}`).hasClass('bomb')) {
-    cellsAroundClick.push((square+10));
-  }
-  if ($(`#${square + 9}`).hasClass('bomb')) {
-    cellsAroundClick.push((square+9));
-  }
-  if ($(`#${square - 1}`).hasClass('bomb')) {
-    cellsAroundClick.push((square-1));
-  }
-  if ($(`#${square - 11}`).hasClass('bomb')) {
-    cellsAroundClick.push((square-11));
-  }
-  console.log(cellsAroundClick);
+  let cellsToCheck = [(square-10), (square-9), (square+1), (square+11), (square+10), (square+9), (square-1), (square-11)];
+  // console.log(cellsToCheck);
+  let cellsAroundClick = [];
 
-  // counter = 0;
-  for (let l = 0; l < cellsAroundClick.length; l++) {
-    counter++;
+  // const square = parseInt($cell.attr("id"));
+  for (let a = 0; a < cellsToCheck.length; a++) {
+    if ($(`#${cellsToCheck[a]}`).hasClass('bomb')) {
+      // console.log(`${a}`);
+      cellsAroundClick.push(a);
+    }
   }
+  // console.log(cellsAroundClick);
 
-  return $cell.text(counter);
+  return $cell.text(cellsAroundClick.length);
 } 
 
 const clicking = $board.on('click', '.square', function() {
   const $cell = $(this);
   if ($cell.hasClass('bomb')) {
     $(".bomb").addClass("showBomb");
-    // $cell.append(`<img src="./bomb-img.jpg"/>`);
     gameOver(false);
   } else {
     const dangerNumber = checkSurroundingCells($cell);
-    console.log($(this));
-    console.log(dangerNumber);
   }
   
 })
